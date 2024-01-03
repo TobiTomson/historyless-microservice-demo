@@ -180,9 +180,11 @@ If you would like to contribute features or fixes to this app, see the [Developm
 ---
 -->
 
-# DASH 2023 - DPN - Fun time with Swagstore
+Disclaimer: This is not an official Datadog lab (yet).
 
-Welcome to Dash 2023 - Datadog Partner Network Challenge !!
+# Fun with the Swagstore
+
+Welcome to Datadog K8S lab !!
 Your goal will be to capture all the flags related to a micro-service architected application called **Swagstore** using Datadog.
 
 The app consists of an 12-tier microservices application. The application is a web-based e-commerce app where users can browse items, add them to the cart, and purchase them.
@@ -192,15 +194,15 @@ It is a fictitious e-commerce swag store, don't expect to receive swags :grinnin
 
 | Home Page                                                                                                         | Checkout Screen                                                                                                    |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [![Screenshot of store homepage](./dash/static/online-boutique-frontend-1.png)](./dash/static/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](./dash/static/online-boutique-frontend-2.png)](./dash/static/online-boutique-frontend-2.png) |
+| [![Screenshot of store homepage](./static/online-boutique-frontend-1.png)](./static/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](./static/online-boutique-frontend-2.png)](./static/online-boutique-frontend-2.png) |
 
 
 ## Architecture
 
-The application is running on a single node kubernetes cluster using minikube
+The application is running on a 2 node kubernetes cluster (1 control-plane, 1 worker node)
 
 [![Architecture of
-microservices](./dash/static/arch.png)](./dash/static/arch.png)
+microservices](./static/arch.png)](./static/arch.png)
 
 
 | Service                                              | Language      | Description                                                                                                                       |
@@ -219,44 +221,23 @@ microservices](./dash/static/arch.png)](./dash/static/arch.png)
 | [loadgenerator](./src/loadgenerator)                 | Python/Locust | Continuously sends requests imitating realistic user shopping flows to the frontend.                                              |
 
 
+## Pre-requisites
+
+Basic knowledge of [Kubernetes](https://kubernetes.io/docs/concepts/overview/) and the [kubectl](https://kubernetes.io/docs/reference/kubectl/) CLI.
+
+
 ## How to ?
 
-The datadog cluster agent configuration is in `dash/datadog-values.yaml`.
+The datadog cluster agent configuration is in `datadog`.
 All configuration `yaml` file for each services are in `kubernetes-manifests` directory.
 
-The only script you should need is `update.sh` to reload all configurations.
 
-## Useful command
-
-Get all pods running
-```bash
-kubectl get pods
-```
-
-Get all services running
-```bash
-kubectl get svc
-```
-
-Check the status of *datadog-agent*
-(Technically you can run any agent command from there including *agent configcheck* for example)
-```bash
-kubectl exec $AGENT_POD -- agent status
-```
-
-If the control plane goes down you can restart it with
-```bash
-minikube start
-```
-
-## Points scoring
-
-> Points
-> * OnBoarding - 15 points
-> * C-Level Request - 80 points
-> * Support Tickets  - 140 points
-> * Total        - 235 points
 
 ## Misc
 
-**Swagstore** is a heavily modified version from the original [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo). In fact, items on the Swagstore are actually Datadog swags.
+**Swagstore** is a heavily modified version from the original [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo). In fact, items on the Swagstore are actually Datadog swags (the store itself is still fake - you cannot buy anything on it).
+
+This repo is a historyless fork of https://github.com/kepicorp/microservices-demo-multiarch, with focus on the ability to quickly and efficiently clone it to speed up setup of lab environments.
+
+
+This lab might be outdated at the time you look at it. Please check when the last commit has happened to gauge how outdated it might be. Technology is moving at a rapid pace. As an example, the Kubernetes docs refer to virtualization and containerization as distinct concepts. Yet, as most competing technologies that have complementary advantages, they are converging as of late. See e.g. [katacontainers](https://katacontainers.io/).
