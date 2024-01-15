@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # FROM golang:1.19.4-alpine AS builder
-FROM --platform=$BUILDPLATFORM golang:1.19.4-alpine AS builder
+FROM --platform=linux/amd64 golang:1.19.4-alpine AS builder
 RUN apk add --no-cache ca-certificates git
 RUN apk add build-base
 

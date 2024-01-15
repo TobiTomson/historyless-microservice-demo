@@ -14,7 +14,7 @@
 
 # FROM eclipse-temurin:19@sha256:17e3d3b61ca4a7606490f596feb77f69980939fecacf91a1f13ea7b17147058f as builder
 
-FROM --platform=$BUILDPLATFORM eclipse-temurin:19.0.1_10-jdk-jammy as builder
+FROM --platform=linux/amd64 eclipse-temurin:19.0.1_10-jdk-jammy as builder
 
 WORKDIR /app
 
