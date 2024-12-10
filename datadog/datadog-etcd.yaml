@@ -57,6 +57,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: datadog-checks
+  namespace: datadog
 data:
   etcd.yaml: |-
     ad_identifiers:
