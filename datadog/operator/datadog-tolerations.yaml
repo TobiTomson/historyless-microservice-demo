@@ -19,9 +19,13 @@ spec:
       enabled: true
       containerCollectAll: true
     apm:
-      enabled: true
-      hostPortConfig:
+      instrumentation:
         enabled: true
+        libVersions:
+          java: "1"
+          dotnet: "3"
+          python: "2"
+          js: "5"
     liveProcessCollection:
       enabled: true
   override:
@@ -30,8 +34,3 @@ spec:
         - effect: NoSchedule
           key: node-role.kubernetes.io/control-plane
           operator: Exists
-      image:
-        tag: 7.49.1
-    clusterAgent:
-      image:
-        tag: 7.49.1
